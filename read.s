@@ -32,6 +32,7 @@
 
 	.data
 m1:	.asciiz "Read next line\n"
+buf:	.space 0x100
 	.text
 	.globl main
 main:
@@ -41,6 +42,8 @@ main:
 	syscall
 
        	li $v0, 8	# syscall 8 (read_string)
+	li $a0, m1
+	li $a1, 0x100
 	syscall
 
        	li $v0, 4	# syscall 4 (print_str)
